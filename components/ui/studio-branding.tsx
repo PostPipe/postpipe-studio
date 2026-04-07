@@ -81,7 +81,7 @@ export function StudioBranding() {
 
           {/* Vibrant Gradient Overlay for text */}
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-cyan-200 bg-clip-text text-transparent pointer-events-none mix-blend-overlay">
-            PostPipe
+            studio.postpipe.in
           </div>
         </motion.div>
       </div>

@@ -20,16 +20,16 @@ export function Navbar() {
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       <nav className="flex items-center justify-between w-full max-w-7xl px-8 py-4 backdrop-blur-xl bg-white/10 border border-white/20 rounded-full shadow-2xl">
-        <div className="flex items-center space-x-3">
+        <Link href="/" className="flex items-center space-x-3 group active:scale-95 transition-transform">
           <Image
             src="/Postpipe-Studio.svg"
             alt="Postpipe Studio Logo"
             width={40}
             height={40}
-            className="h-10 w-auto"
+            className="h-10 w-auto transition-transform group-hover:rotate-6"
           />
           <span className="text-xl font-bold text-white tracking-tight">Postpipe Studio</span>
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-white/80">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>

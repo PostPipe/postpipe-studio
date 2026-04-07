@@ -71,3 +71,36 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Custom Scrollbar Styles - Ultra Slim, Ghost & Translucent */
+::-webkit-scrollbar {
+  width: 5px; /* Thinner for a ghost effect */
+}
+
+/* Remove Up/Down buttons */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important; /* Force transparency to show edge-to-edge BG */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.03); /* Almost invisible by default */
+  border-radius: 100px;
+  border: 1px solid transparent; 
+  background-clip: content-box;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.6); /* Vibrant cyan glow when active */
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+/* Firefox support - Minimalist */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.03) transparent;
+}

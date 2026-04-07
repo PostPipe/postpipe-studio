@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "PostPipe Studio | Design Your Backend",
   description: "APIs, databases, and logic — designed, not coded.",
+  icons: {
+    icon: "/Postpipe-Studio.ico",
+    shortcut: "/Postpipe-Studio.ico",
+    apple: "/Postpipe-Studio.ico",
+  },
 };
 
 export default function RootLayout({
