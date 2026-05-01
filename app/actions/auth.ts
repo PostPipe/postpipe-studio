@@ -1,10 +1,14 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { POSTPIPE_URL, UserProfile } from "@/lib/auth-client";
 
 export async function getServerUserProfile(): Promise<UserProfile | null> {
-  const token = process.env.POSTPIPE_TOKEN;
-  const userSession = process.env.POSTPIPE_USER_SESSION;
+  const cookieStore = await cookies();
+  
+  // Try environment variables first, then fallback to cookies
+  const token = process.env.POSTPIPE_TOKEN || cookieStore.get('token')?.value;
+  const userSession = process.env.POSTPIPE_USER_SESSION || cookieStore.get('user_session')?.value;
 
   if (!token) return null;
 
