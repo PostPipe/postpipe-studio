@@ -9,6 +9,7 @@ import { checkUserCanvases } from "@/app/actions/canvas";
 export function HeroAuthButtons() {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [hasCanvases, setHasCanvases] = useState(false);
+  const [hasApiKey, setHasApiKey] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,6 +18,9 @@ export function HeroAuthButtons() {
         const profile = await fetchUserProfile();
         setUser(profile);
         
+        const apiKey = localStorage.getItem('piko_api_key');
+        setHasApiKey(!!apiKey);
+
         if (profile) {
           const result = await checkUserCanvases(profile.id);
           setHasCanvases(result.hasCanvases);
@@ -39,8 +43,9 @@ export function HeroAuthButtons() {
     );
   }
 
-  const mainButtonLabel = user ? (hasCanvases ? "Launch Canvas" : "Get Started") : "Get Started";
-  const mainButtonHref = user ? "/canvas" : `${POSTPIPE_URL}/login`;
+  const isLoggedIn = user || hasApiKey;
+  const mainButtonLabel = isLoggedIn ? (hasCanvases ? "Launch Canvas" : "Launch Studio") : "Get Started";
+  const mainButtonHref = isLoggedIn ? "/canvas" : `${POSTPIPE_URL}/login`;
 
   return (
     <div className="flex flex-col items-center justify-start space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">

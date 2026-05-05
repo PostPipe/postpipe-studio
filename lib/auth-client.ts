@@ -1,6 +1,6 @@
 import { getServerUserProfile } from "@/app/actions/auth";
 
-export const POSTPIPE_URL = process.env.NEXT_PUBLIC_POSTPIPE_URL || 'https://www.postpipe.in';
+export const POSTPIPE_URL = process.env.NEXT_PUBLIC_POSTPIPE_URL || 'https://postpipe.in';
 
 export interface UserProfile {
   id: string;

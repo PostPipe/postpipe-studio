@@ -7,10 +7,19 @@ export async function getServerUserProfile(): Promise<UserProfile | null> {
   const cookieStore = await cookies();
   
   // Try environment variables first, then fallback to cookies
-  const token = process.env.POSTPIPE_TOKEN || cookieStore.get('token')?.value;
-  const userSession = process.env.POSTPIPE_USER_SESSION || cookieStore.get('user_session')?.value;
+  const token = process.env.POSTPIPE_TOKEN || 
+                cookieStore.get('token')?.value || 
+                cookieStore.get('piko_token')?.value ||
+                cookieStore.get('__Secure-next-auth.session-token')?.value;
+                
+  const userSession = process.env.POSTPIPE_USER_SESSION || 
+                      cookieStore.get('user_session')?.value ||
+                      cookieStore.get('session')?.value;
 
-  if (!token) return null;
+  if (!token) {
+    console.log("[Auth] No token found in cookies or environment.");
+    return null;
+  }
 
   try {
     const res = await fetch(`${POSTPIPE_URL}/api/auth/me`, {

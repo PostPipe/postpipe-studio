@@ -67,6 +67,9 @@ export function StudioBranding() {
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-cyan-200 bg-clip-text text-transparent pointer-events-none mix-blend-overlay">
             Studio.
           </div>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] text-zinc-500 font-mono tracking-[0.3em] uppercase opacity-50">
+            postpipe-studio.vercel.app
+          </div>
         </div>
       </div>
 

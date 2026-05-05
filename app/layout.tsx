@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://studio.postpipe.in"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://studio.postpipe.in` : "https://postpipe-studio.vercel.app")
+  ),
   title: "PostPipe Studio | Visual Backend Architecture Engine",
   description: "Design production-ready APIs, databases, and logic visually. Transform complex requirements into elegant architecture without writing boilerplate code.",
   keywords: ["backend design", "visual programming", "API generator", "database architecture", "no-code backend", "PostPipe"],
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://studio.postpipe.in",
+    url: "https://postpipe-studio.vercel.app",
     title: "PostPipe Studio | Visual Backend Architecture Engine",
     description: "Design production-ready APIs, databases, and logic visually. The next generation of backend development.",
     siteName: "PostPipe Studio",
