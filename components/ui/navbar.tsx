@@ -43,7 +43,21 @@ export function Navbar() {
           <Link href={`${POSTPIPE_URL}/dashboard`} className="hover:text-white transition-colors">Postpipe</Link>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center space-x-4">
+          {!loading && !user && !hasApiKey && (
+            <button 
+              onClick={() => {
+                const key = window.prompt("Enter your PostPipe/Piko API Key:");
+                if (key) {
+                  localStorage.setItem('piko_api_key', key);
+                  window.location.reload();
+                }
+              }}
+              className="hidden sm:block text-xs font-medium text-white/50 hover:text-white transition-colors"
+            >
+              Login with Key
+            </button>
+          )}
           {!loading && (
             <Link
               href={(user || hasApiKey) ? "/canvas" : `${POSTPIPE_URL}/login`}
