@@ -49,13 +49,23 @@ export function HeroAuthButtons() {
 
   return (
     <div className="flex flex-col items-center justify-start space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-      <Link
-        href={mainButtonHref}
-        className="group flex h-14 w-full items-center justify-center space-x-2 rounded-full bg-white px-8 font-bold text-black transition-all hover:bg-zinc-200 sm:w-auto hover:scale-105 active:scale-95 shadow-xl"
-      >
-        <span>{mainButtonLabel}</span>
-        <MoveRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-      </Link>
+      {isLoggedIn ? (
+        <Link
+          href="/canvas"
+          className="group flex h-14 w-full items-center justify-center space-x-2 rounded-full bg-white px-8 font-bold text-black transition-all hover:bg-zinc-200 sm:w-auto hover:scale-105 active:scale-95 shadow-xl"
+        >
+          <span>{hasCanvases ? "Launch Canvas" : "Launch Studio"}</span>
+          <MoveRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+        </Link>
+      ) : (
+        <Link
+          href={`${POSTPIPE_URL}/login`}
+          className="group flex h-14 w-full items-center justify-center space-x-2 rounded-full bg-white px-8 font-bold text-black transition-all hover:bg-zinc-200 sm:w-auto hover:scale-105 active:scale-95 shadow-xl"
+        >
+          <span>Get Started</span>
+          <MoveRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+        </Link>
+      )}
       <Link
         href="https://github.com"
         className="flex h-14 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10 sm:w-auto hover:border-white/40 shadow-lg"

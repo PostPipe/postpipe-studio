@@ -59,12 +59,23 @@ export function Navbar() {
             </button>
           )}
           {!loading && (
-            <Link
-              href={(user || hasApiKey) ? "/canvas" : `${POSTPIPE_URL}/login`}
-              className="bg-white text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-200 transition-all shadow-lg whitespace-nowrap"
-            >
-              {(user || hasApiKey) ? "Launch Canvas" : "Sign Up"}
-            </Link>
+            <>
+              {(user || hasApiKey) ? (
+                <Link
+                  href="/canvas"
+                  className="bg-white text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-200 transition-all shadow-lg whitespace-nowrap"
+                >
+                  Launch Canvas
+                </Link>
+              ) : (
+                <Link
+                  href={`${POSTPIPE_URL}/login`}
+                  className="bg-white text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-200 transition-all shadow-lg whitespace-nowrap"
+                >
+                  Sign Up
+                </Link>
+              )}
+            </>
           )}
         </div>
       </nav>
