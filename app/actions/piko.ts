@@ -1,6 +1,6 @@
 'use server';
 
-const PIKO_API_URL = process.env.NEXT_PUBLIC_PIKO_API_URL || 'http://localhost:8000/api';
+const PIKO_API_URL = process.env.NEXT_PUBLIC_PIKO_API_URL || 'https://piko.postpipe.in/api';
 
 export async function sendPikoMessage(message: string, sessionId: string, apiKey?: string) {
   try {
@@ -68,7 +68,7 @@ export async function deletePikoConversation(sessionId: string) {
 
 export async function getPikoStructure(apiKey: string) {
   try {
-    const POSTPIPE_URL = process.env.POSTPIPE_URL || 'http://localhost:9002';
+    const POSTPIPE_URL = process.env.POSTPIPE_URL || 'https://postpipe.in';
     const headers = { 'x-piko-api-key': apiKey };
     
     const [formsRes, presetsRes] = await Promise.all([
@@ -98,7 +98,7 @@ export async function getPikoStructure(apiKey: string) {
 
 export async function getPikoConnectors(apiKey: string) {
   try {
-    const POSTPIPE_URL = process.env.POSTPIPE_URL || 'http://localhost:9002';
+    const POSTPIPE_URL = process.env.POSTPIPE_URL || 'https://postpipe.in';
     const response = await fetch(`${POSTPIPE_URL}/api/piko/v1/connectorsAndSecrets`, {
       headers: { 'x-piko-api-key': apiKey }
     });
@@ -115,7 +115,7 @@ export async function getPikoConnectors(apiKey: string) {
 
 export async function getPikoFormSchema(formId: string, apiKey: string) {
   try {
-    const POSTPIPE_URL = process.env.POSTPIPE_URL || 'http://localhost:9002';
+    const POSTPIPE_URL = process.env.POSTPIPE_URL || 'https://postpipe.in';
     const response = await fetch(`${POSTPIPE_URL}/api/piko/v1/forms/${formId}`, {
       headers: { 'x-piko-api-key': apiKey },
       cache: 'no-store'

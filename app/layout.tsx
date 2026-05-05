@@ -15,12 +15,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PostPipe Studio | Design Your Backend",
-  description: "APIs, databases, and logic — designed, not coded.",
+  metadataBase: new URL("https://studio.postpipe.in"),
+  title: "PostPipe Studio | Visual Backend Architecture Engine",
+  description: "Design production-ready APIs, databases, and logic visually. Transform complex requirements into elegant architecture without writing boilerplate code.",
+  keywords: ["backend design", "visual programming", "API generator", "database architecture", "no-code backend", "PostPipe"],
+  authors: [{ name: "PostPipe Team" }],
+  creator: "PostPipe",
+  publisher: "PostPipe Studio",
   icons: {
     icon: "/Postpipe-Studio.ico",
     shortcut: "/Postpipe-Studio.ico",
     apple: "/Postpipe-Studio.ico",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://studio.postpipe.in",
+    title: "PostPipe Studio | Visual Backend Architecture Engine",
+    description: "Design production-ready APIs, databases, and logic visually. The next generation of backend development.",
+    siteName: "PostPipe Studio",
+    images: [
+      {
+        url: "/og-image.png", // Assuming this will be created or exists
+        width: 1200,
+        height: 630,
+        alt: "PostPipe Studio Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PostPipe Studio | Visual Backend Architecture Engine",
+    description: "Design production-ready APIs, databases, and logic visually.",
+    images: ["/og-image.png"],
+    creator: "@postpipe_ai",
   },
 };
 

@@ -26,28 +26,28 @@ export function Footer() {
           <ul className="space-y-4 text-sm text-zinc-500">
             <li><Link href="/how-it-works" className="hover:text-cyan-400 transition-colors">How it Works</Link></li>
             <li><Link href="/demo" className="hover:text-cyan-400 transition-colors">Demo</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Pricing</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Integrations</Link></li>
+            <li><Link href="https://postpipe.in/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link></li>
+            <li><Link href="https://postpipe.in/integrations" className="hover:text-cyan-400 transition-colors">Integrations</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest text-zinc-400">Resources</h4>
           <ul className="space-y-4 text-sm text-zinc-500">
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Documentation</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">API Reference</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Community</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Blog</Link></li>
+            <li><Link href="https://postpipe.in/docs" className="hover:text-cyan-400 transition-colors">Documentation</Link></li>
+            <li><Link href="https://postpipe.in/api-reference" className="hover:text-cyan-400 transition-colors">API Reference</Link></li>
+            <li><Link href="https://discord.gg/postpipe" className="hover:text-cyan-400 transition-colors">Community</Link></li>
+            <li><Link href="https://postpipe.in/blog" className="hover:text-cyan-400 transition-colors">Blog</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest text-zinc-400">Company</h4>
           <ul className="space-y-4 text-sm text-zinc-500">
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">About Us</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Careers</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
-            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Terms of Service</Link></li>
+            <li><Link href="https://postpipe.in/about" className="hover:text-cyan-400 transition-colors">About Us</Link></li>
+            <li><Link href="https://postpipe.in/careers" className="hover:text-cyan-400 transition-colors">Careers</Link></li>
+            <li><Link href="https://postpipe.in/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
+            <li><Link href="https://postpipe.in/terms" className="hover:text-cyan-400 transition-colors">Terms of Service</Link></li>
           </ul>
         </div>
       </div>
