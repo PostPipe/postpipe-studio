@@ -3,11 +3,12 @@
 import { cookies } from 'next/headers';
 import { POSTPIPE_URL, UserProfile } from "@/lib/auth-client";
 
-export async function getServerUserProfile(): Promise<UserProfile | null> {
+export async function getServerUserProfile(manualToken?: string): Promise<UserProfile | null> {
   const cookieStore = await cookies();
   
-  // Try environment variables first, then fallback to cookies
-  const token = process.env.POSTPIPE_TOKEN || 
+  // Try manual token first (API based login), then environment variables, then fallback to cookies
+  const token = manualToken ||
+                process.env.POSTPIPE_TOKEN || 
                 cookieStore.get('token')?.value || 
                 cookieStore.get('postpipe_auth')?.value ||
                 cookieStore.get('piko_token')?.value ||
