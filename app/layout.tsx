@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
 
@@ -67,6 +68,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-[#0a0a0b]" suppressHydrationWarning>
+        <Toaster position="top-center" richColors theme="dark" />
         <SmoothScroll />
         {children}
       </body>

@@ -3,20 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchUserProfile, UserProfile, POSTPIPE_URL } from "@/lib/auth-client";
+import { AuthModal } from "./auth-modal";
 
 export function Navbar() {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [hasApiKey, setHasApiKey] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     async function checkAuth() {
       const profile = await fetchUserProfile();
       setUser(profile);
-      
+
       const apiKey = localStorage.getItem('piko_api_key');
       setHasApiKey(!!apiKey);
-      
+
       setLoading(false);
     }
     checkAuth();
@@ -44,20 +46,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4">
-          {!loading && !user && !hasApiKey && (
-            <button 
-              onClick={() => {
-                const key = window.prompt("Enter your PostPipe/Piko API Key:");
-                if (key) {
-                  localStorage.setItem('piko_api_key', key);
-                  window.location.reload();
-                }
-              }}
-              className="hidden sm:block text-xs font-medium text-white/50 hover:text-white transition-colors"
-            >
-              Login with Key
-            </button>
-          )}
           {!loading && (
             <>
               {(user || hasApiKey) ? (
@@ -68,17 +56,18 @@ export function Navbar() {
                   Launch Canvas
                 </Link>
               ) : (
-                <Link
-                  href={`${POSTPIPE_URL}/login`}
+                <button 
+                  onClick={() => setIsModalOpen(true)}
                   className="bg-white text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-200 transition-all shadow-lg whitespace-nowrap"
                 >
-                  Sign Up
-                </Link>
+                  Login with Key
+                </button>
               )}
             </>
           )}
         </div>
       </nav>
+      <AuthModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }
