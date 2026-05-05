@@ -9,11 +9,13 @@ export async function getServerUserProfile(): Promise<UserProfile | null> {
   // Try environment variables first, then fallback to cookies
   const token = process.env.POSTPIPE_TOKEN || 
                 cookieStore.get('token')?.value || 
+                cookieStore.get('postpipe_auth')?.value ||
                 cookieStore.get('piko_token')?.value ||
                 cookieStore.get('__Secure-next-auth.session-token')?.value;
                 
   const userSession = process.env.POSTPIPE_USER_SESSION || 
                       cookieStore.get('user_session')?.value ||
+                      cookieStore.get('postpipe_session')?.value ||
                       cookieStore.get('session')?.value;
 
   if (!token) {
