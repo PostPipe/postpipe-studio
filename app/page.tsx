@@ -10,6 +10,25 @@ import { Sparkles } from "lucide-react";
 export default function Home() {
 	return (
 		<main className="relative min-h-screen bg-black">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						'@context': 'https://schema.org',
+						'@type': 'WebApplication',
+						name: 'PostPipe Studio',
+						description: 'Design production-ready APIs, databases, and logic visually. Transform complex requirements into elegant architecture without writing boilerplate code.',
+						url: 'https://studio.postpipe.in',
+						applicationCategory: 'DeveloperApplication',
+						operatingSystem: 'Any',
+						creator: {
+							'@type': 'Organization',
+							name: 'PostPipe',
+							url: 'https://postpipe.in',
+						},
+					}).replace(/</g, '\\u003c'),
+				}}
+			/>
 			<Navbar />
 
 			{/* Fixed Background Layer (Client Component) */}
