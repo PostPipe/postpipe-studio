@@ -31,11 +31,32 @@ export async function sendPikoMessage(message: string, sessionId: string, apiKey
   }
 }
 
-export async function getPikoHistory() {
+export async function getPikoHistory(apiKey?: string) {
   try {
     const response = await fetch(`${PIKO_API_URL}/history`);
     if (!response.ok) throw new Error("Failed to fetch history");
-    return await response.json();
+    const allHistory = await response.json();
+    
+    // Concurrently fetch conversation details to check ownership
+    const checks = await Promise.all(allHistory.map(async (item: any) => {
+      try {
+        const convRes = await fetch(`${PIKO_API_URL}/conversation/${item.sessionId}`);
+        if (convRes.ok) {
+          const convData = await convRes.json();
+          const itemKey = convData.apiKey || "";
+          const targetKey = apiKey || "";
+          // Only include if the API keys match (empty string matches personal account)
+          if (itemKey === targetKey) {
+            return item;
+          }
+        }
+      } catch (e) {
+        // Ignore fetch errors for individual conversations
+      }
+      return null;
+    }));
+    
+    return checks.filter(Boolean);
   } catch (error) {
     console.error("Error fetching Piko history:", error);
     return [];

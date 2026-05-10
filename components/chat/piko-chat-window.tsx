@@ -176,7 +176,9 @@ export function PikoChatWindow({ isOpen, onClose, dragConstraints, dragMomentum 
   // --- Data Fetching ---
 
   const fetchHistory = async () => {
-    const data = await getPikoHistory();
+    // Check localStorage directly to avoid race conditions on first mount
+    const currentKey = apiKey || (typeof window !== 'undefined' ? localStorage.getItem("piko_api_key") : "") || "";
+    const data = await getPikoHistory(currentKey);
     if (data && Array.isArray(data)) setHistory(data);
   };
 
